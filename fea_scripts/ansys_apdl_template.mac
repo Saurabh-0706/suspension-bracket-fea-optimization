@@ -1,0 +1,53 @@
+! ansys_apdl_template.mac
+!
+! Static structural solve of the meshed bracket (from mesh_scripts/) under
+! the peak suspension-mount load derived from the quarter-car dynamics
+! model (dynamics_matlab/). Extracts max von Mises stress and part mass.
+!
+! Usage: run in batch mode, e.g.
+!   ansys232 -b -i ansys_apdl_template.mac -o run.out -p_mesh <mesh.cdb> -p_load <peak_force_N>
+
+/CLEAR
+/FILNAME,bracket_static,1
+/PREP7
+
+! --- 1. Import mesh exported from HyperMesh ---
+CDREAD,DB,%p_mesh%,CDB
+
+! --- 2. Material (placeholder: generic structural steel) ---
+! TODO: replace with the actual candidate material's properties
+MP,EX,1,210E9      ! Young's modulus [Pa]
+MP,PRXY,1,0.3       ! Poisson's ratio
+MP,DENS,1,7850      ! density [kg/m^3], needed for mass output
+
+! --- 3. Boundary conditions ---
+! TODO: apply fixed constraints at the bracket's chassis-side mounting
+! holes (named selection from HyperMesh, e.g. "FIXED_HOLES")
+CMSEL,S,FIXED_HOLES
+D,ALL,ALL,0
+ALLSEL
+
+! --- 4. Apply peak load at the suspension-side mount ---
+! %p_load% passed in from the Python orchestration script, sourced from
+! quarter_car_ode.m / the Simulink model's peak_force output
+CMSEL,S,LOAD_NODE
+F,ALL,FY,-%p_load%
+ALLSEL
+
+FINISH
+/SOLU
+ANTYPE,STATIC
+SOLVE
+FINISH
+
+/POST1
+! --- 5. Extract results for the automation pipeline ---
+*GET,MAX_STRESS,NODE,0,S,EQV,MAX
+*GET,TOTAL_MASS,ELEM,0,MTOT,X   ! total mass from element summary
+
+*CFOPEN,results_summary,csv,,APPEND
+*VWRITE,MAX_STRESS,TOTAL_MASS
+(F12.2,',',F12.4)
+*CFCLOSE
+
+FINISH

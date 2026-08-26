@@ -1,0 +1,19 @@
+# CAD binaries (large; track via Git LFS if needed, or keep local)
+*.prt
+*.asm
+*.CATPart
+*.CATProduct
+
+# ANSYS / HyperMesh run artifacts
+*.rst
+*.err
+*.log
+*.h5
+run.out
+
+# MATLAB
+*.asv
+*.m~
+
+# OS
+.DS_Store
