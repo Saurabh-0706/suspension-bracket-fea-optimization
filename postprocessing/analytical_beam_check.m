@@ -6,9 +6,10 @@
 % the "standards-based verification" step that needs no lab and no
 % licensed standard document -- only a hand calculation.
 %
-% TODO: replace the placeholder geometry/load with the actual baseline
-% bracket dimensions and the peak load from quarter_car_ode.m /
-% build_quarter_car_simulink.m.
+% Defaults below now match the actual baseline bracket (cad/, Fusion 360)
+% and the cross-checked quarter-car peak load (dynamics_matlab/):
+% Simulink gave 3898.0 N, the ODE script gave 3953.5 N (1.4% apart) --
+% F_peak here uses their average, ~3926 N. Update if you refine either.
 
 function sigma_max = analytical_beam_check(F_peak, L, b, h)
     % F_peak : peak transverse load at the critical section [N]
@@ -16,10 +17,10 @@ function sigma_max = analytical_beam_check(F_peak, L, b, h)
     % b, h   : critical section width and height [m]
 
     if nargin == 0
-        F_peak = 2500;  % [N], placeholder -- replace with FEA/dynamics result
-        L = 0.08;       % [m]
-        b = 0.03;       % [m]
-        h = 0.01;       % [m]
+        F_peak = 3926;  % [N] -- average of the Simulink/ODE cross-checked peaks
+        L = 0.08;       % [m] -- chassis edge to Ø12mm load-hole center (0.08 m nominal; hole is at x=80mm)
+        b = 0.03;       % [m] -- plate width
+        h = 0.01;       % [m] -- plate thickness
     end
 
     M = F_peak * L;              % bending moment at the section [N.m]

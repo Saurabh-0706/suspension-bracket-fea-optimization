@@ -1,6 +1,14 @@
 """
 run_parameter_sweep.py
 
+SUPERSEDED for now: see ANSYS_MECHANICAL_WORKFLOW.md, which meshes and
+solves directly in ANSYS Mechanical (Workbench) rather than exporting a
+HyperMesh mesh for this script to batch-process -- HyperMesh Student
+Edition can only export OptiStruct/RADIOSS decks, not the ANSYS .cdb this
+script's pipeline expects. Kept as a reference for automating the sweep
+via command-line batch runs later, once a mesh/solve path that produces
+ANSYS-readable decks is available.
+
 Orchestrates the full pipeline for a batch of bracket geometry
 configurations:
 

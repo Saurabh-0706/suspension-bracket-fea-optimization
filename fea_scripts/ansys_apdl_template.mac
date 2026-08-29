@@ -1,5 +1,16 @@
 ! ansys_apdl_template.mac
 !
+! SUPERSEDED for now by the native ANSYS Mechanical (Workbench) workflow in
+! ANSYS_MECHANICAL_WORKFLOW.md -- that workflow meshes and solves directly
+! in Mechanical, since HyperMesh Student Edition can only export to
+! OptiStruct/RADIOSS (.fem), not the ANSYS .cdb format this macro expects.
+!
+! Kept here as a documented next-level-automation path: once you have a
+! working Mechanical-based solve, this is what a scripted, command-line
+! batch version of the same solve would look like if you later get access
+! to a HyperMesh license that can export ANSYS .cdb, or generate one via
+! Mechanical's own "Write Input File" or APDL Command Snippet export.
+!
 ! Static structural solve of the meshed bracket (from mesh_scripts/) under
 ! the peak suspension-mount load derived from the quarter-car dynamics
 ! model (dynamics_matlab/). Extracts max von Mises stress and part mass.
