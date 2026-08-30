@@ -55,3 +55,7 @@
 *elementtype 220 1
 *loaddefaultattributevaluesfromxml 
 *modelcheck_loadconfigfile 
+# Session ended at "8-29-2026  22:29:36"
+return; # Stop script and return to application 
+# *quit 1; # Uncomment to exit application
+*do_markrejectclear 0
