@@ -19,7 +19,7 @@ function sigma_max = analytical_beam_check(F_peak, L, b, h)
     if nargin == 0
         F_peak = 3926;  % [N] -- average of the Simulink/ODE cross-checked peaks
         L = 0.08;       % [m] -- chassis edge to Ø12mm load-hole center (0.08 m nominal; hole is at x=80mm)
-        b = 0.03;       % [m] -- plate width
+        b = 0.018;       % [m] -- plate width
         h = 0.01;       % [m] -- plate thickness
     end
 
