@@ -46,15 +46,21 @@ Every version of this idea needs a load case for the FEA. The weak version of th
 ```
 suspension-bracket-fea-optimization/
 ├── README.md
-├── cad/                      # Fusion 360 file + STEP export
+├── cad/                      # Fusion 360 files + STEP exports (flat-plate baseline + redesigned channel)
 ├── dynamics_matlab/          # Simulink quarter-car model builder + MATLAB ODE cross-check + fatigue
+│                              # + export_load_table_for_ansys.m (downsamples the load history for a
+│                              #   Transient Structural tabular load, guaranteeing the true peak survives)
 ├── mesh_scripts/             # HyperMesh TCL/Python batch-meshing scripts (supplementary skill evidence)
 ├── fea_scripts/              # ANSYS Mechanical workflow notes + results; APDL/PyMAPDL scripts kept as an optional scripted-automation path
 ├── postprocessing/           # analytical hand-calc cross-check, result parsing, plotting
 ├── optimization/              # mass-minimization driver script
 ├── report/                   # final write-up and figures
-└── results/                   # raw result data (CSV), stress-contour images
+└── results/                   # raw result data (CSV), stress-contour images, transient stress animation
 ```
+
+## Phase 2: Transient Dynamic Loading on a Redesigned Channel-Section Part
+
+The pipeline above applies the quarter-car model's *peak* load as a static design load. A second phase pushes further: a **U-channel redesign** of the bracket (motivated by the optimization step's finding that a flat plate is a mass-inefficient way to add stiffness), analyzed with a genuine **Transient Structural** solve driven by the *full* time-varying mount-force history (not just its peak), including its own temporal-convergence check, a clean same-mesh static-vs-transient comparison (finding no significant dynamic amplification once the comparison is done correctly), an animated stress-contour video export, and a properly-anchored analytical cross-check that demonstrates *where* beam theory does and doesn't apply. Full details and results are in `report/technical_report.md`, Section 7.
 
 ## What This Demonstrates
 
