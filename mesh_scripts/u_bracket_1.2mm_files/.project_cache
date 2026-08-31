@@ -15,6 +15,7 @@ dp0/SYS-1/MECH/file0.err
 dp0/SYS-1/MECH/file0.PCS
 dp0/SYS-1/MECH/MatML.xml
 dp0/SYS-1/MECH/solve.out
+dp0/SYS-2/ENGD/EngineeringData.xml
 dp0/act.dat
 dp0/designPoint.wbdp
 session_files/journal1.wbjn
@@ -25,6 +26,7 @@ session_files/
 dp0/global/
 dp0/SYS/
 dp0/SYS-1/
+dp0/SYS-2/
 dp0/global/MECH/
 dp0/global/MECH/SYS/
 dp0/global/MECH/SYS-1/
@@ -34,6 +36,8 @@ dp0/SYS/MECH/
 dp0/SYS-1/DM/
 dp0/SYS-1/ENGD/
 dp0/SYS-1/MECH/
+dp0/SYS-2/DM/
+dp0/SYS-2/ENGD/
 dpall/global/
 dpall/global/ACT/
 dpall/global/ACT/extensions/

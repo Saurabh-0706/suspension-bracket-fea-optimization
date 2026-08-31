@@ -1,0 +1,48 @@
+# encoding: utf-8
+# 2026 R1
+SetScriptVersion(Version="26.1.174")
+template1 = GetTemplate(
+    TemplateName="Transient Structural",
+    Solver="ANSYS")
+system1 = GetSystem(Name="SYS")
+system2 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometry1 = system2.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/srp07/OneDrive/Desktop/suspension-bracket-fea-optimization/cad/bracket_channel_v2.step")
+modelComponent1 = system2.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system2.GetContainer(ComponentName="Model")
+model1.Edit()
+template2 = GetTemplate(TemplateName="Mechanical APDL")
+componentTemplate1 = GetComponentTemplate(Name="ANSYSSetupCellTemplate")
+system3 = template2.CreateSystem(
+    DataTransferFrom=[Set(FromComponent=modelComponent1, TransferName=None, ToComponentTemplate=componentTemplate1)],
+    RelativeTo=system2)
+template3 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+componentTemplate2 = GetComponentTemplate(Name="SimulationModelCellTemplate")
+setupComponent1 = system3.GetComponent(Name="Setup")
+system4 = template3.CreateSystem(
+    DataTransferTo=[Set(FromComponentTemplate=componentTemplate2, TransferName=None, ToComponent=setupComponent1)],
+    Position="Left",
+    RelativeTo=system3)
+geometry2 = system4.GetContainer(ComponentName="Geometry")
+geometry2.SetFile(FilePath="C:/Users/srp07/OneDrive/Desktop/suspension-bracket-fea-optimization/cad/bracket_channel_v2.step")
+modelComponent2 = system4.GetComponent(Name="Model")
+modelComponent2.Refresh()
+model2 = system4.GetContainer(ComponentName="Model")
+model2.Edit()
+model2.Exit()
+setup1 = system4.GetContainer(ComponentName="Setup")
+setup1.Edit()
+model2.Exit()
+system4.Delete()
+system3.Delete()
+Save(Overwrite=True)
+Save(Overwrite=True)
+system5 = template3.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)
+Save(Overwrite=True)

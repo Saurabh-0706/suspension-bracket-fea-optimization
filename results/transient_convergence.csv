@@ -1,0 +1,4 @@
+run_type,mesh,peak_stress_MPa,peak_time_s,peak_location
+transient_51pt,channel_1.2mm,2654.0,0.353,"chassis-hole (5mm) edge, bottom face of web, near fixed support"
+transient_100pt,channel_1.2mm,2677.2,0.353,"chassis-hole (5mm) edge, bottom face of web, near fixed support"
+static_clean,channel_1.2mm,2694.5,n/a,"chassis-hole (5mm) edge, bottom face of web, near fixed support"

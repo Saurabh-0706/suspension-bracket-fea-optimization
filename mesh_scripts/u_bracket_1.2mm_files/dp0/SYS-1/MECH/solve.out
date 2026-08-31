@@ -1,0 +1,969 @@
+
+ Ansys Mechanical Enterprise Academic Student      
+
+
+ *------------------------------------------------------------------*
+ |                                                                  |
+ |   W E L C O M E   T O   T H E   A N S Y S (R)  P R O G R A M     |
+ |                                                                  |
+ *------------------------------------------------------------------*
+
+
+
+
+ ***************************************************************
+ *         ANSYS MAPDL 2026 R1          LEGAL NOTICES          *
+ ***************************************************************
+ *                                                             *
+ * Copyright (c) 2026 Synopsys, Inc. and ANSYS, Inc.           *
+ * All rights reserved.                                        *
+ * Unauthorized use, distribution or duplication is            *
+ * prohibited.                                                 *
+ *                                                             *
+ * Ansys is a registered trademark of Ansys, Inc. or its       *
+ * subsidiaries in the United States or other countries.       *
+ * See the Ansys, Inc. online documentation or the Ansys, Inc. *
+ * documentation CD or online help for the complete Legal      *
+ * Notice.                                                     *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * THIS ANSYS SOFTWARE PRODUCT AND PROGRAM DOCUMENTATION       *
+ * INCLUDE TRADE SECRETS AND CONFIDENTIAL AND PROPRIETARY      *
+ * PRODUCTS OF ANSYS, INC., ITS SUBSIDIARIES, OR LICENSORS.    *
+ * The software products and documentation are furnished by    *
+ * Ansys, Inc. or its subsidiaries under a software license    *
+ * agreement that contains provisions concerning               *
+ * non-disclosure, copying, length and nature of use,          *
+ * compliance with exporting laws, warranties, disclaimers,    *
+ * limitations of liability, and remedies, and other           *
+ * provisions.  The software products and documentation may be *
+ * used, disclosed, transferred, or copied only in accordance  *
+ * with the terms and conditions of that software license      *
+ * agreement.                                                  *
+ *                                                             *
+ * Ansys, Inc. is a UL registered                              *
+ * ISO 9001:2015 company.                                      *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * This product is subject to U.S. laws governing export and   *
+ * re-export.                                                  *
+ *                                                             *
+ * For U.S. Government users, except as specifically granted   *
+ * by the Ansys, Inc. software license agreement, the use,     *
+ * duplication, or disclosure by the United States Government  *
+ * is subject to restrictions stated in the Ansys, Inc.        *
+ * software license agreement and FAR 12.212 (for non-DOD      *
+ * licenses).                                                  *
+ *                                                             *
+ ***************************************************************
+
+ 2026 R1 
+     
+ Point Releases and Patches installed:   
+     
+ Ansys, Inc. License Manager 2026 R1 
+ Discovery (full install) 2026 R1
+ Core WB Files 2026 R1   
+ optiSLang Core UI 2026 R1   
+ CFX (includes CFD-Post) 2026 R1 
+ Chemkin 2026 R1 
+ EnSight 2026 R1 
+ FENSAP-ICE 2026 R1  
+ Fluent (includes CFD-Post) 2026 R1  
+ Polyflow (includes CFD-Post) 2026 R1
+ Forte (includes EnSight) 2026 R1
+ Rocky 2026 R1   
+ TurboGrid 2026 R1   
+ ACIS Geometry Interface 2026 R1 
+ AutoCAD Geometry Interface 2026 R1  
+ Catia, Version 4 Geometry Interface 2026 R1 
+ Catia, Version 5 Geometry Interface 2026 R1 
+ Catia, Version 6 Geometry Interface 2026 R1 
+ Creo Elements/Direct Modeling Geometry Interface 2026 R1
+ Creo Parametric Geometry Interface 2026 R1  
+ Inventor Geometry Interface 2026 R1 
+ JTOpen Geometry Interface 2026 R1   
+ NX Geometry Interface 2026 R1   
+ Parasolid Geometry Interface  2026 R1   
+ Solid Edge Geometry Interface 2026 R1   
+ SOLIDWORKS Geometry Interface 2026 R1   
+ Speos 2026 R1   
+ SpaceClaim 2026 R1  
+ Speos RPC 2026 R1   
+ Zemax OpticStudio 2026 R1   
+ Dynamic Reporting 2026 R1   
+ Aqwa 2026 R1
+ Autodyn 2026 R1 
+ Material Calibration App 2026 R1
+ Mechanical Products 2026 R1 
+ Motion 2026 R1  
+ Academic Student 2026 R1
+
+
+          *****  MAPDL COMMAND LINE ARGUMENTS  *****
+  BATCH MODE REQUESTED (-b)    = NOLIST
+  INPUT FILE COPY MODE (-c)    = COPY
+  DISTRIBUTED MEMORY PARALLEL REQUESTED
+       4 PARALLEL PROCESSES REQUESTED WITH SINGLE THREAD PER PROCESS
+    TOTAL OF     4 CORES REQUESTED
+  INPUT FILE NAME              = C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4\dummy.dat
+  OUTPUT FILE NAME             = C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4\solve.out
+  START-UP FILE MODE           = NOREAD
+  STOP FILE MODE               = NOREAD
+
+ RELEASE= 2026 R1              BUILD= 26.1      UP20260202   VERSION=WINDOWS x64 
+ CURRENT JOBNAME=file0  16:33:02  AUG 31, 2026  Elapsed Time=       0.094
+
+
+ PARAMETER _DS_PROGRESS =     999.0000000    
+
+ /INPUT FILE= ds.dat  LINE=       0
+
+
+
+ *** NOTE ***                            ELAPSED TIME =       4.970   TIME= 16:33:02
+ The /CONFIG,NOELDB command is not valid in a distributed memory         
+ parallel solution.  Command is ignored.                                 
+
+ *GET  _WALLSTRT  FROM  ACTI  ITEM=TIME WALL  VALUE= 0.138605372E-02
+
+ TITLE= 
+ bracket_3mm--Transient (B5)                                                   
+
+  ACT Extensions:
+      LSDYNA, 2026.1
+      5f463412-bd3e-484b-87e7-cbc0a665e474, wbex
+      ANSYSMotion, 2026.1
+      20180725-3f81-49eb-9f31-41364844c769, wbex
+
+ SET PARAMETER DIMENSIONS ON  _WB_PROJECTSCRATCH_DIR
+  TYPE=STRI  DIMENSIONS=      248        1        1
+
+ PARAMETER _WB_PROJECTSCRATCH_DIR(1) = C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4\
+
+ SET PARAMETER DIMENSIONS ON  _WB_SOLVERFILES_DIR
+  TYPE=STRI  DIMENSIONS=      248        1        1
+
+ PARAMETER _WB_SOLVERFILES_DIR(1) = C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\bracket_3mm_files\dp0\SYS-1\MECH\
+
+ SET PARAMETER DIMENSIONS ON  _WB_USERFILES_DIR
+  TYPE=STRI  DIMENSIONS=      248        1        1
+
+ PARAMETER _WB_USERFILES_DIR(1) = C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\bracket_3mm_files\user_files\
+ --- Data in consistent NMM units. See Solving Units in the help system for more
+
+ MPA UNITS SPECIFIED FOR INTERNAL    
+  LENGTH      = MILLIMETERS (mm)
+  MASS        = TONNE (Mg)
+  TIME        = SECONDS (sec)
+  TEMPERATURE = CELSIUS (C)
+  TOFFSET     = 273.0
+  FORCE       = NEWTON (N)
+  HEAT        = MILLIJOULES (mJ)
+
+ INPUT  UNITS ARE ALSO SET TO MPA 
+
+ *** MAPDL - ENGINEERING ANALYSIS SYSTEM  RELEASE 2026 R1          26.1     ***
+ Ansys Mechanical Enterprise Academic Student      
+ 01055371  VERSION=WINDOWS x64   16:33:02  AUG 31, 2026 Elapsed Time=      4.991
+
+ bracket_3mm--Transient (B5)                                                   
+
+
+
+          ***** MAPDL ANALYSIS DEFINITION (PREP7) *****
+ *********** Send User Defined Coordinate System(s) ***********
+ *********** Nodes for the whole assembly ***********
+ *********** Elements for Body 1 '2026-08-30-22-58-16-228|Body1' ***********
+ *********** Set Reference Temperature ***********
+ *********** Send Materials ***********
+ *********** Fixed Supports ***********
+ *********** Define Force Using Surface Effect Elements ***********
+
+
+ ***** ROUTINE COMPLETED *****  ELAPSED TIME =         5.314
+
+
+ --- Number of total nodes = 100530
+ --- Number of contact elements = 316
+ --- Number of spring elements = 0
+ --- Number of bearing elements = 0
+ --- Number of solid elements = 58274
+ --- Number of condensed parts = 0
+ --- Number of total elements = 58590
+
+ *GET  _WALLBSOL  FROM  ACTI  ITEM=TIME WALL  VALUE= 0.147775125E-02
+ ****************************************************************************
+ *************************    SOLUTION       ********************************
+ ****************************************************************************
+
+ *****  MAPDL SOLUTION ROUTINE  *****
+
+
+ PERFORM A TRANSIENT ANALYSIS
+  THIS WILL BE A NEW ANALYSIS
+
+ STEP BOUNDARY CONDITION KEY= 1
+
+ PARAMETER _THICKRATIO =     1.000000000    
+
+ USE PRECONDITIONED CONJUGATE GRADIENT SOLVER
+  CONVERGENCE TOLERANCE = 1.00000E-08
+  MAXIMUM ITERATION     = NumNode*DofPerNode*  1.0000    
+
+ CONTACT INFORMATION PRINTOUT LEVEL       1
+
+ CHECK INITIAL OPEN/CLOSED STATUS OF SELECTED CONTACT ELEMENTS
+      AND LIST DETAILED CONTACT PAIR INFORMATION
+
+ SPLIT CONTACT SURFACES AT SOLVE PHASE
+
+    NUMBER OF SPLITTING TBD BY PROGRAM
+
+ DO NOT COMBINE ELEMENT MATRIX FILES (.emat) AFTER DISTRIBUTED PARALLEL SOLUTION
+
+ DO NOT COMBINE ELEMENT SAVE DATA FILES (.esav) AFTER DISTRIBUTED PARALLEL SOLUTION
+
+ PERFORM A FULL TRANSIENT ANALYSIS
+  USING HHT ALGORITHM
+
+ USE SETTINGS FOR MODERATE SPEED DYNAMIC APPLICATIONS
+ SECOND ORDER TRANSIENT PARAMETERS
+   GAMMA= 0.1000      (ALPHA= 0.3025      DELTA= 0.6000      ALPHAF= 0.1000      ALPHAM=  0.000    )
+
+ USE FIRST ORDER TRANSIENT PARAMETER THETA=  1.000    
+
+ NLDIAG: Nonlinear diagnostics CONT option is set to ON. 
+         Writing frequency : each ITERATION.
+
+ DEFINE RESTART CONTROL FOR LOADSTEP LAST
+ AT FREQUENCY OF LAST AND NUMBER FOR OVERWRITE IS   -1
+
+ DELETE RESTART FILES OF ENDSTEP
+ ****************************************************
+ ******************* SOLVE FOR LS 1 OF 1 ****************
+
+ SELECT       FOR ITEM=TYPE COMPONENT=    
+  IN RANGE         2 TO          2 STEP          1
+
+        316  ELEMENTS (OF      58590  DEFINED) SELECTED BY  ESEL  COMMAND.
+
+ SELECT      ALL NODES HAVING ANY ELEMENT IN ELEMENT SET.
+
+        696 NODES (OF     100530  DEFINED) SELECTED FROM
+      316 SELECTED ELEMENTS BY NSLE COMMAND.
+
+ SPECIFIED SURFACE LOAD PRES FOR ALL SELECTED ELEMENTS  LKEY =  1   KVAL = 1
+      SET ACCORDING TO TABLE PARAMETER = _LOADVARI41X                                                                                                                                                                                                                                                    
+
+ SPECIFIED SURFACE LOAD PRES FOR ALL SELECTED ELEMENTS  LKEY =  2   KVAL = 1
+      SET ACCORDING TO TABLE PARAMETER = _LOADVARI41Y                                                                                                                                                                                                                                                    
+
+ SPECIFIED SURFACE LOAD PRES FOR ALL SELECTED ELEMENTS  LKEY =  3   KVAL = 1
+      SET ACCORDING TO TABLE PARAMETER = _LOADVARI41Z                                                                                                                                                                                                                                                    
+
+ ALL SELECT   FOR ITEM=NODE COMPONENT=    
+  IN RANGE         1 TO     100530 STEP          1
+
+     100530  NODES (OF     100530  DEFINED) SELECTED BY NSEL  COMMAND.
+
+ ALL SELECT   FOR ITEM=ELEM COMPONENT=    
+  IN RANGE         1 TO      80630 STEP          1
+
+      58590  ELEMENTS (OF      58590  DEFINED) SELECTED BY  ESEL  COMMAND.
+
+ PRINTOUT RESUMED BY /GOP
+
+ USE AUTOMATIC TIME STEPPING THIS LOAD STEP
+
+ USE      51 SUBSTEPS INITIALLY THIS LOAD STEP FOR ALL  DEGREES OF FREEDOM
+ FOR AUTOMATIC TIME STEPPING:
+   USE     51 SUBSTEPS AS A MAXIMUM
+   USE     51 SUBSTEPS AS A MINIMUM
+
+ TIME=  2.0000    
+
+ INCLUDE TRANSIENT EFFECTS FOR  ALL DEGREES OF FREEDOM THIS LOAD STEP
+
+ ERASE THE CURRENT DATABASE OUTPUT CONTROL TABLE.
+
+
+ WRITE ALL  ITEMS TO THE DATABASE WITH A FREQUENCY OF NONE
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE NSOL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE RSOL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE EANG ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE ETMP ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE VENG ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE STRS ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE EPEL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE EPPL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE CONT ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE V    ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE A    ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ *GET  ANSINTER_  FROM  ACTI  ITEM=INT        VALUE=  0.00000000    
+
+ *IF  ANSINTER_  ( =   0.00000     )  NE  
+      0  ( =   0.00000     )  THEN    
+
+ *ENDIF
+
+ *** NOTE ***                            ELAPSED TIME =       5.399   TIME= 16:33:02
+ The automatic domain decomposition logic has selected the MESH domain   
+ decomposition method with 4 processes per solution.                     
+
+ *****  MAPDL SOLVE    COMMAND  *****
+
+ *** WARNING ***                         ELAPSED TIME =       5.475   TIME= 16:33:02
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** NOTE ***                            ELAPSED TIME =       5.606   TIME= 16:33:02
+ The model data was checked and warning messages were found.             
+  Please review output or errors file (                                  
+ C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mes 
+ h_scripts\_ProjectScratch\ScrAFE4\file0.err ) for these warning         
+ messages.                                                               
+
+ *** SELECTION OF ELEMENT TECHNOLOGIES FOR APPLICABLE ELEMENTS ***
+      --- GIVE SUGGESTIONS AND RESET THE KEY OPTIONS ---
+
+ ELEMENT TYPE         1 IS SOLID187. IT IS NOT ASSOCIATED WITH FULLY INCOMPRESSIBLE
+ HYPERELASTIC MATERIALS. NO SUGGESTION IS AVAILABLE AND NO RESETTING IS NEEDED.
+
+
+
+ *** MAPDL - ENGINEERING ANALYSIS SYSTEM  RELEASE 2026 R1          26.1     ***
+ Ansys Mechanical Enterprise Academic Student      
+ 01055371  VERSION=WINDOWS x64   16:33:02  AUG 31, 2026 Elapsed Time=      5.619
+
+ bracket_3mm--Transient (B5)                                                   
+
+
+
+                       S O L U T I O N   O P T I O N S
+
+   PROBLEM DIMENSIONALITY. . . . . . . . . . . . .3-D                  
+   DEGREES OF FREEDOM. . . . . . UX   UY   UZ  
+   ANALYSIS TYPE . . . . . . . . . . . . . . . . .TRANSIENT            
+      SOLUTION METHOD. . . . . . . . . . . . . . .FULL                 
+   OFFSET TEMPERATURE FROM ABSOLUTE ZERO . . . . .  273.15    
+   EQUATION SOLVER OPTION. . . . . . . . . . . . .PCG                
+      TOLERANCE. . . . . . . . . . . . . . . . . . 1.00000E-08
+   GLOBALLY ASSEMBLED MATRIX . . . . . . . . . . .SYMMETRIC  
+
+ *** WARNING ***                         ELAPSED TIME =       5.654   TIME= 16:33:03
+ Material number 2 (used by element 80315) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** NOTE ***                            ELAPSED TIME =       5.660   TIME= 16:33:03
+ The step data was checked and warning messages were found.              
+  Please review output or errors file (                                  
+ C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mes 
+ h_scripts\_ProjectScratch\ScrAFE4\file0.err ) for these warning         
+ messages.                                                               
+
+ *** NOTE ***                            ELAPSED TIME =       5.661   TIME= 16:33:03
+ The conditions for direct assembly have been met.  No .emat or .erot    
+ files will be produced.                                                 
+
+  
+  
+     D I S T R I B U T E D   D O M A I N   D E C O M P O S E R
+  
+  ...Number of elements: 58590
+  ...Number of nodes:    100530
+  ...Decompose to 4 CPU domains
+  ...Element load balance ratio =     1.016
+
+
+                      L O A D   S T E P   O P T I O N S
+
+   LOAD STEP NUMBER. . . . . . . . . . . . . . . .     1
+   TIME AT END OF THE LOAD STEP. . . . . . . . . .  2.0000    
+   AUTOMATIC TIME STEPPING . . . . . . . . . . . .    ON
+      INITIAL NUMBER OF SUBSTEPS . . . . . . . . .    51
+      MAXIMUM NUMBER OF SUBSTEPS . . . . . . . . .    51
+      MINIMUM NUMBER OF SUBSTEPS . . . . . . . . .    51
+   STEP CHANGE BOUNDARY CONDITIONS . . . . . . . .   YES
+   TRANSIENT (INERTIA) EFFECTS
+      STRUCTURAL DOFS. . . . . . . . . . . . . . .    ON
+   TRANSIENT INTEGRATION PARAMETERS
+      GAMMA. . . . . . . . . . . . . . . . . . . . 0.10000    
+      ALPHA. . . . . . . . . . . . . . . . . . . . 0.30250    
+      DELTA. . . . . . . . . . . . . . . . . . . . 0.60000    
+      USING HHT TIME INTEGRATION
+      ALPHAF . . . . . . . . . . . . . . . . . . . 0.10000    
+      ALPHAM . . . . . . . . . . . . . . . . . . .  0.0000    
+   PRINT OUTPUT CONTROLS . . . . . . . . . . . . .NO PRINTOUT
+   DATABASE OUTPUT CONTROLS
+      ITEM     FREQUENCY   COMPONENT
+       ALL       NONE               
+      NSOL        ALL               
+      RSOL        ALL               
+      EANG        ALL               
+      ETMP        ALL               
+      VENG        ALL               
+      STRS        ALL               
+      EPEL        ALL               
+      EPPL        ALL               
+      CONT        ALL               
+      V           ALL               
+      A           ALL               
+
+
+ SOLUTION MONITORING INFO IS WRITTEN TO FILE= file.mntr                                                                                                                                                                                                                                                           
+
+
+ *** NOTE ***                            ELAPSED TIME =       6.291   TIME= 16:33:03
+ The PCG solver has automatically set the level of difficulty for this   
+ model to 3.                                                             
+
+
+                         ***********  PRECISE MASS SUMMARY  ***********
+
+   TOTAL RIGID BODY MASS MATRIX ABOUT ORIGIN
+               Translational mass               |   Coupled translational/rotational mass
+        0.25631E-03    0.0000        0.0000     |     0.0000       0.17632E-02   0.81932E-10
+         0.0000       0.25631E-03    0.0000     |   -0.17632E-02    0.0000       0.12081E-01
+         0.0000        0.0000       0.25631E-03 |   -0.81932E-10  -0.12081E-01    0.0000    
+     ------------------------------------------ | ------------------------------------------
+                                                |         Rotational mass (inertia)
+                                                |    0.75338E-01   0.35558E-08  -0.83516E-01
+                                                |    0.35558E-08   0.78107       0.14403E-08
+                                                |   -0.83516E-01   0.14403E-08   0.81480    
+
+   TOTAL MASS = 0.25631E-03
+     The mass principal axes coincide with the global Cartesian axes
+
+   CENTER OF MASS (X,Y,Z)=    47.133      -0.31966E-06    6.8790    
+
+   TOTAL INERTIA ABOUT CENTER OF MASS
+        0.63209E-01  -0.30592E-09  -0.41241E-03
+       -0.30592E-09   0.19955       0.87669E-09
+       -0.41241E-03   0.87669E-09   0.24540    
+
+   PRINCIPAL INERTIAS =   0.63209E-01   0.19955       0.24541    
+   ORIENTATION VECTORS OF THE INERTIA PRINCIPAL AXES IN GLOBAL CARTESIAN
+     ( 1.000, 0.000, 0.002) (-0.000, 1.000,-0.000) (-0.002, 0.000, 1.000) 
+
+
+  *** MASS SUMMARY BY ELEMENT TYPE ***
+
+  TYPE      MASS
+     1  0.256313E-03
+
+ Range of element maximum matrix coefficients in global coordinates
+ Maximum = 1631814.55 at element 58227.                                  
+ Minimum = 71408.799 at element 39124.                                   
+
+   *** ELEMENT MATRIX FORMULATION TIMES
+     TYPE    NUMBER     ENAME   TOTAL ELAPSED   AVG ELAPSED
+
+        1     58274  SOLID187          3.8015   0.000065235
+        2       316   SURF154          0.0168   0.000053284
+ Elapsed Time at end of element matrix formulation = 7.7194752.          
+
+ ALL CURRENT MAPDL DATA WRITTEN TO FILE NAME= file.rdb
+  FOR POSSIBLE RESUME FROM THIS POINT
+ Iteration=    10 Ratio=  8.227830E-02 Limit=  1.000000E-08 Wall=     0.1
+ Iteration=    30 Ratio=  9.713336E-04 Limit=  1.000000E-08 Wall=     0.4
+ Iteration=    60 Ratio=  2.052319E-06 Limit=  1.000000E-08 Wall=     0.7
+
+ DISTRIBUTED PCG SOLVER SOLUTION CONVERGED
+
+ DISTRIBUTED PCG SOLVER SOLUTION STATISTICS
+
+   NUMBER OF ITERATIONS=          83
+   NUMBER OF EQUATIONS =      301590
+   CALCULATED NORM     = 0.96363E-08
+   SPECIFIED TOLERANCE = 0.10000E-07
+   TOTAL CPU TIME (sec)=        1.30
+   TOTAL WALL TIME(sec)=        1.33
+   TOTAL MEMORY (GB)   =        0.14
+
+
+   *** ELEMENT RESULT CALCULATION TIMES
+     TYPE    NUMBER     ENAME   TOTAL ELAPSED   AVG ELAPSED
+
+        1     58274  SOLID187          3.0107   0.000051664
+        2       316   SURF154          0.0123   0.000038844
+
+   *** NODAL LOAD CALCULATION TIMES
+     TYPE    NUMBER     ENAME   TOTAL ELAPSED   AVG ELAPSED
+
+        1     58274  SOLID187          0.6272   0.000010764
+        2       316   SURF154          0.0009   0.000002990
+ *** LOAD STEP     1   SUBSTEP     1  COMPLETED.    CUM ITER =      1
+ *** TIME =  0.392157E-01     TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     2  COMPLETED.    CUM ITER =      2
+ *** TIME =  0.784314E-01     TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     3  COMPLETED.    CUM ITER =      3
+ *** TIME =  0.117647         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     4  COMPLETED.    CUM ITER =      4
+ *** TIME =  0.156863         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     5  COMPLETED.    CUM ITER =      5
+ *** TIME =  0.196078         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     6  COMPLETED.    CUM ITER =      6
+ *** TIME =  0.235294         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     7  COMPLETED.    CUM ITER =      7
+ *** TIME =  0.274510         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     8  COMPLETED.    CUM ITER =      8
+ *** TIME =  0.313725         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP     9  COMPLETED.    CUM ITER =      9
+ *** TIME =  0.352941         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    10  COMPLETED.    CUM ITER =     10
+ *** TIME =  0.392157         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    11  COMPLETED.    CUM ITER =     11
+ *** TIME =  0.431373         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    12  COMPLETED.    CUM ITER =     12
+ *** TIME =  0.470588         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    13  COMPLETED.    CUM ITER =     13
+ *** TIME =  0.509804         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    14  COMPLETED.    CUM ITER =     14
+ *** TIME =  0.549020         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9392E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    15  COMPLETED.    CUM ITER =     15
+ *** TIME =  0.588235         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    16  COMPLETED.    CUM ITER =     16
+ *** TIME =  0.627451         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    17  COMPLETED.    CUM ITER =     17
+ *** TIME =  0.666667         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    18  COMPLETED.    CUM ITER =     18
+ *** TIME =  0.705882         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    19  COMPLETED.    CUM ITER =     19
+ *** TIME =  0.745098         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    20  COMPLETED.    CUM ITER =     20
+ *** TIME =  0.784314         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    21  COMPLETED.    CUM ITER =     21
+ *** TIME =  0.823529         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    22  COMPLETED.    CUM ITER =     22
+ *** TIME =  0.862745         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    23  COMPLETED.    CUM ITER =     23
+ *** TIME =  0.901961         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    24  COMPLETED.    CUM ITER =     24
+ *** TIME =  0.941176         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    25  COMPLETED.    CUM ITER =     25
+ *** TIME =  0.980392         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    26  COMPLETED.    CUM ITER =     26
+ *** TIME =   1.01961         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    27  COMPLETED.    CUM ITER =     27
+ *** TIME =   1.05882         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    28  COMPLETED.    CUM ITER =     28
+ *** TIME =   1.09804         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    29  COMPLETED.    CUM ITER =     29
+ *** TIME =   1.13725         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    30  COMPLETED.    CUM ITER =     30
+ *** TIME =   1.17647         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    31  COMPLETED.    CUM ITER =     31
+ *** TIME =   1.21569         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    32  COMPLETED.    CUM ITER =     32
+ *** TIME =   1.25490         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    33  COMPLETED.    CUM ITER =     33
+ *** TIME =   1.29412         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9388E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    34  COMPLETED.    CUM ITER =     34
+ *** TIME =   1.33333         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9394E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    35  COMPLETED.    CUM ITER =     35
+ *** TIME =   1.37255         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9393E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    36  COMPLETED.    CUM ITER =     36
+ *** TIME =   1.41176         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9388E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    37  COMPLETED.    CUM ITER =     37
+ *** TIME =   1.45098         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    38  COMPLETED.    CUM ITER =     38
+ *** TIME =   1.49020         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    39  COMPLETED.    CUM ITER =     39
+ *** TIME =   1.52941         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    40  COMPLETED.    CUM ITER =     40
+ *** TIME =   1.56863         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9388E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    41  COMPLETED.    CUM ITER =     41
+ *** TIME =   1.60784         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    42  COMPLETED.    CUM ITER =     42
+ *** TIME =   1.64706         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9387E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    43  COMPLETED.    CUM ITER =     43
+ *** TIME =   1.68627         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1063.       PERIOD=  0.9406E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    44  COMPLETED.    CUM ITER =     44
+ *** TIME =   1.72549         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9393E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    45  COMPLETED.    CUM ITER =     45
+ *** TIME =   1.76471         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9388E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    46  COMPLETED.    CUM ITER =     46
+ *** TIME =   1.80392         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    47  COMPLETED.    CUM ITER =     47
+ *** TIME =   1.84314         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    48  COMPLETED.    CUM ITER =     48
+ *** TIME =   1.88235         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9390E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    49  COMPLETED.    CUM ITER =     49
+ *** TIME =   1.92157         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9389E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    50  COMPLETED.    CUM ITER =     50
+ *** TIME =   1.96078         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9391E-03  PTS/CYC = 0.24E-01
+ *** AUTO STEP TIME:  NEXT TIME INC = 0.39216E-01  UNCHANGED
+
+ *** LOAD STEP     1   SUBSTEP    51  COMPLETED.    CUM ITER =     51
+ *** TIME =   2.00000         TIME INC =  0.392157E-01  NEW TRIANG MATRIX
+ *** RESPONSE FREQ =  1065.       PERIOD=  0.9387E-03  PTS/CYC = 0.24E-01
+
+
+ *** MAPDL BINARY FILE STATISTICS
+  BUFFER SIZE USED= 16384
+      349.188 MB WRITTEN ON RESULTS FILE: file0.rst
+ *************** Write FE CONNECTORS *********
+
+ WRITE OUT CONSTRAINT EQUATIONS TO FILE= file.ce                                                                                                                                                                                                                                                             
+ ****************************************************
+ *************** FINISHED SOLVE FOR LS 1 *************
+
+ FINISH SOLUTION PROCESSING
+
+
+ ***** ROUTINE COMPLETED *****  ELAPSED TIME =       332.959
+
+
+
+ *GET  _WALLASOL  FROM  ACTI  ITEM=TIME WALL  VALUE= 0.924891668E-01
+
+ PRINTOUT RESUMED BY /GOP
+
+ *GET  _PCGITER  FROM  ACTI  ITEM=SOLU CGIT  VALUE=  83.0000000    
+
+ *** MAPDL - ENGINEERING ANALYSIS SYSTEM  RELEASE 2026 R1          26.1     ***
+ Ansys Mechanical Enterprise Academic Student      
+ 01055371  VERSION=WINDOWS x64   16:38:30  AUG 31, 2026 Elapsed Time=    332.983
+
+ bracket_3mm--Transient (B5)                                                   
+
+
+
+          ***** MAPDL RESULTS INTERPRETATION (POST1) *****
+
+ *** NOTE ***                            ELAPSED TIME =     332.985   TIME= 16:38:30
+ Reading results into the database (SET command) will update the current 
+ displacement and force boundary conditions in the database with the     
+ values from the results file for that load set.  Note that any          
+ subsequent solutions will use these values unless action is taken to    
+ either SAVE the current values or not overwrite them (/EXIT,NOSAVE).    
+
+ Set Encoding of XML File to:ISO-8859-1
+
+ Set Output of XML File to:
+     PARM,     ,     ,     ,     ,     ,     ,     ,     ,     ,     ,     ,
+         ,     ,     ,     ,     ,     ,     ,
+
+ DATABASE WRITTEN ON FILE  parm.xml                                                                                                                                                                                                                                                            
+
+ EXIT THE MAPDL POST1 DATABASE PROCESSOR
+
+
+ ***** ROUTINE COMPLETED *****  ELAPSED TIME =       332.992
+
+
+
+ PRINTOUT RESUMED BY /GOP
+
+ *GET  _WALLDONE  FROM  ACTI  ITEM=TIME WALL  VALUE= 0.924979802E-01
+
+ PARAMETER _PREPTIME =    0.3301111000    
+
+ PARAMETER _SOLVTIME =     327.6410959    
+
+ PARAMETER _POSTTIME =    0.3172840000E-01
+
+ PARAMETER _TOTALTIM =     328.0029354    
+
+ *GET  _DLBRATIO  FROM  ACTI  ITEM=SOLU DLBR  VALUE=  1.01624906    
+
+ *GET  _COMBTIME  FROM  ACTI  ITEM=SOLU COMB  VALUE=  13.7310389    
+
+ *GET  _SSMODE   FROM  ACTI  ITEM=SOLU SSMM  VALUE=  2.00000000    
+
+ *GET  _NDOFS    FROM  ACTI  ITEM=SOLU NDOF  VALUE=  299898.000    
+
+ *GET  _SOL_END_TIME  FROM  ACTI  ITEM=SET  TIME  VALUE=  2.00000000    
+
+ *IF  _sol_end_time  ( =   2.00000     )  EQ  
+      2.000000  ( =   2.00000     )  THEN    
+
+ /FCLEAN COMMAND REMOVING ALL LOCAL FILES
+
+ *ENDIF
+ --- Total number of nodes = 100530
+ --- Total number of elements = 58590
+ --- Element load balance ratio = 1.01624906
+ --- Time to combine distributed files = 13.7310389
+ --- Sparse memory mode = 2
+ --- Number of DOF = 299898
+
+ EXIT MAPDL WITHOUT SAVING DATABASE
+
+
+ NUMBER OF WARNING MESSAGES ENCOUNTERED=          2
+ NUMBER OF ERROR   MESSAGES ENCOUNTERED=          0
+
+ *** NOTE ***                            ELAPSED TIME =     343.458   TIME= 16:38:40
+ The solution for the current simulation was performed using 4 cores.    
+ The parallel performance of this simulation on this hardware indicates  
+ that this simulation would benefit from using additional CPU cores.     
+ Consider using more CPU cores, which may require additional HPC         
+ licenses, when running this simulation again on the same hardware.      
+
++--------------------- M A P D L   S T A T I S T I C S ------------------------+
+
+Release: 2026 R1            Build: 26.1       Update: UP20260202   Platform: WINDOWS x64 
+Date Run: 08/31/2026   Time: 16:38     Process ID: 29328
+Operating System: Windows 11  (Build: 26200)
+
+Processor Model: 11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz
+
+Compiler: Intel(R) Fortran Compiler Classic Version 2021.9  (Build: 20230302)
+          Intel(R) C/C++ Compiler Classic Version 2021.9  (Build: 20230302)
+          Intel(R) oneAPI Math Kernel Library Version 2024.2.3-Product Build 20250403
+
+Number of machines requested            :    1
+Total number of cores available         :   12
+Number of physical cores available      :    6
+Number of processes requested           :    4
+Number of threads per process requested :    1
+Total number of cores requested         :    4 (Distributed Memory Parallel)               
+MPI Type: INTELMPI
+MPI Version: Intel(R) MPI Library 2021.16 for Windows* OS
+
+
+GPU Acceleration: Not Requested
+
+Job Name: file0
+Input File: dummy.dat
+
+  Core                Machine Name   Working Directory
+ -----------------------------------------------------
+     0                    SRP_0706   C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4
+     1                    SRP_0706   C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4
+     2                    SRP_0706   C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4
+     3                    SRP_0706   C:\Users\srp07\OneDrive\Desktop\suspension-bracket-fea-optimization\mesh_scripts\_ProjectScratch\ScrAFE4
+ 
+Latency time from master to core     1 =    1.610 microseconds
+Latency time from master to core     2 =    1.602 microseconds
+Latency time from master to core     3 =    1.657 microseconds
+ 
+Communication speed from master to core     1 =  9578.77 MB/sec
+Communication speed from master to core     2 =  9505.14 MB/sec
+Communication speed from master to core     3 =  9456.49 MB/sec
+
+Total CPU time for main thread                    :      294.2 seconds
+Total CPU time summed for all threads             :      298.0 seconds
+
+Elapsed time spent obtaining a license            :        0.5 seconds
+Elapsed time spent pre-processing model (/PREP7)  :        0.3 seconds
+Elapsed time spent solution - preprocessing       :        0.7 seconds
+Elapsed time spent computing solution             :      312.7 seconds
+   Elapsed time in element formation & assembly   :       97.8 seconds
+   Elapsed time in equation solver                :      122.5 seconds
+   Elapsed time in element result calculations    :       91.6 seconds
+Elapsed time spent solution - postprocessing      :       13.7 seconds
+Elapsed time spent post-processing model (/POST1) :        0.0 seconds
+ 
+Equation solver used                              :            PCG (symmetric)
+PCG equation solver computational rate            :        4.1 Gflops
+
+Sum of disk space used on all processes           :     2558.1 MB
+
+Sum of memory used on all processes               :      849.0 MB
+Sum of memory allocated on all processes          :     3168.0 MB
+Physical memory available                         :         16 GB
+Total amount of I/O written to disk               :        4.6 GB
+Total amount of I/O read from disk                :        1.8 GB
+
++------------------ E N D   M A P D L   S T A T I S T I C S -------------------+
+
+
+ *-----------------------------------------------------------------------------*
+ |                                                                             |
+ |                               RUN COMPLETED                                 |
+ |                                                                             |
+ |-----------------------------------------------------------------------------|
+ |                                                                             |
+ |  Ansys MAPDL 2026 R1         Build 26.1         UP20260202    WINDOWS x64   |
+ |                                                                             |
+ |-----------------------------------------------------------------------------|
+ |                                                                             |
+ |  Database Requested(-db)     1024 MB     Scratch Memory Requested   1024 MB |
+ |  Max Database Used(Master)     80 MB     Max Scratch Used(Master)    230 MB |
+ |  Max Database Used(Workers)     1 MB     Max Scratch Used(Workers)   180 MB |
+ |  Sum Database Used(All)        83 MB     Sum Scratch Used(All)       766 MB |
+ |                                                                             |
+ |-----------------------------------------------------------------------------|
+ |                                                                             |
+ |        CP Time      (sec) =        297.984       Time  =  16:38:40          |
+ |        Elapsed Time (sec) =        343.457       Date  =  08/31/2026        |
+ |                                                                             |
+ *-----------------------------------------------------------------------------*
