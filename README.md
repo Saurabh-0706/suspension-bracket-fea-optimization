@@ -1,82 +1,97 @@
 # Automated FEA-Driven Lightweighting of a Vehicle Suspension Mounting Bracket
 
-A self-contained, computational engineering project combining parametric CAD, scripted mesh generation and FEA, MATLAB/Simulink-derived dynamic loading, and constrained mass optimization. No lab access, no proprietary company standards, and no physical test rig are required — verification comes from analytical hand calculations, a mesh-convergence study, and cross-checking two independent dynamic models against each other.
+A self-contained computational engineering project: a design load derived from a quarter-car dynamics model, carried through ANSYS Mechanical FEA, an analytical cross-check, a rainflow/Miner fatigue estimate and a constrained mass optimization, then extended with a transient (time-varying) analysis of a redesigned U-channel bracket. No lab access, proprietary standards or physical test rig were used. Verification comes from an analytical hand calculation, a mesh-convergence study, a temporal-convergence check and two independent dynamic models cross-checked against each other. It is not physical-test correlation.
+
+The full write-up is in [`report/technical_report.md`](report/technical_report.md).
+
+## Results at a Glance
+
+| Step | Result |
+|---|---|
+| Design load (quarter-car, 0.05 m / 3 Hz bump) | MATLAB ODE 3953.5 N vs. Simulink 3898.0 N, 1.4% apart; design load ≈ 3926 N |
+| Mesh convergence (flat plate, ANSYS Mechanical) | 837.05 / 947.68 / 998.40 MPa at 3.0 / 1.5 / 1.2 mm; 0.75 mm exceeded the ANSYS Student ~32,000-node limit |
+| Analytical cross-check (net-section beam theory) | 1046.9 MPa vs. 998.4 MPa FEA (4.9%); the gross-section first pass was 628.2 MPa, 58.9% off |
+| Fatigue estimate (rainflow + Miner, generic S-N curve) | 10 counted cycles, damage 0.0022 per pass, about 455 repeats of the event to reach 1.0 |
+| Mass optimization (`fmincon`, thickness only) | Baseline 10 mm fails a 1.5x safety factor on yield; minimum feasible thickness 24.48 mm, mass 0.2080 → 0.5091 kg |
+| Channel redesign, transient vs. static (same mesh) | 2677.2 MPa vs. 2694.5 MPa, dynamic amplification ≈ 0.99 |
+| Temporal convergence (51 vs. 100 table points) | 2654.0 vs. 2677.2 MPa, 0.87% change |
+
+![Quarter-car suspension mount force from the MATLAB ODE model](results/peak%20mount%20force.png)
+
+*Mount-force history for the 2-second bump event (MATLAB ODE). The peak of about 3953 N at t ≈ 0.35 s is the design load; the full curve drives the fatigue estimate and the transient FEA.*
 
 ## Problem Statement
 
-Structural brackets that connect suspension components (control arms, dampers) to a vehicle frame carry static and dynamic loads from braking, cornering, and road inputs. Removing unnecessary mass improves ride and efficiency, but only if the remaining structure is verified against realistic loading — not just an assumed static g-factor. This project builds a small, automated pipeline that: (1) generates a physically-derived dynamic load history from a quarter-car model instead of a guessed static load, (2) runs that load through an automated CAD-to-FEA workflow, (3) cross-checks the result analytically, and (4) optimizes the bracket geometry to minimize mass under a stress/fatigue constraint.
+Structural brackets that connect suspension components (control arms, dampers) to a vehicle frame carry static and dynamic loads from road inputs and other events. Removing unnecessary mass improves ride and efficiency, but only if the remaining structure is verified against a realistic load rather than an assumed static g-factor. This project builds a small pipeline that (1) derives a load history from a quarter-car model instead of a guessed static load, (2) runs that load through meshing and FEA, (3) cross-checks the result analytically, and (4) optimizes the bracket under a stress constraint.
 
-## Why MATLAB/Simulink Is In This Project (Not Just Bolted On)
+## Why MATLAB/Simulink Is In This Project
 
-Every version of this idea needs a load case for the FEA. The weak version of that is "assume 3g and move on." The stronger version — and the reason Simulink belongs here rather than being decorative — is to derive that load from an actual dynamic model:
+Every version of this idea needs a load case for the FEA. The weak version is "assume 3g and move on." The stronger version is to derive the load from a dynamic model:
 
-- A **quarter-car model** (sprung mass, unsprung mass, suspension spring/damper, tire stiffness) is simulated in **Simulink**, driven by a road input (a bump profile or an ISO 8608 random road profile).
-- The force transmitted through the suspension mount over time is extracted — this is the load *history* at the bracket, not a single static number.
-- The same quarter-car system is independently solved as a plain **MATLAB** ODE (`ode45`), and the two results are cross-checked against each other. This mirrors the FEA-vs-analytical-hand-calculation verification step later in the pipeline, so the whole project has one consistent theme: never trust a single model without an independent check.
-- The peak load feeds the static FEA boundary condition; the full load history feeds a basic **rainflow-counting + Miner's-rule fatigue estimate in MATLAB**, using an openly published S-N curve (not a lab-measured one) — giving the project a genuine durability/fatigue angle, which is the piece most CAE-focused job postings ask for and a one-off static FEA project doesn't cover.
+- A **2-DOF quarter-car model** (sprung mass 350 kg, unsprung mass 45 kg, suspension 35 kN/m and 2.5 kN·s/m, tire stiffness 250 kN/m) is built in **Simulink**, driven by a 0.05 m, 3 Hz bump windowed to the first second of a 2-second run.
+- The same system is solved independently as a MATLAB ODE (`ode45`), and the two peak forces are compared (1.4% apart).
+- The peak load feeds the static FEA boundary condition. The full load history feeds the rainflow-counting + Miner's-rule fatigue estimate and the transient FEA.
+- An ISO 8608 random road profile is not used in this version; it is listed under next steps.
 
 ## Tools Used
 
 | Purpose | Tool |
 |---|---|
 | Parametric CAD | Autodesk Fusion 360 |
-| Mesh generation & FEA solver | **ANSYS Mechanical** (native meshing + static solve, Workbench GUI) |
-| Supplementary meshing practice | Altair HyperMesh Student Edition (OptiStruct/RADIOSS export only — see note below) |
-| Dynamic load generation | **MATLAB + Simulink** (quarter-car model), cross-checked against a MATLAB ODE solution |
-| Fatigue estimate | MATLAB (rainflow counting + Miner's rule) |
-| Automation & orchestration | Python (NumPy, Pandas, Matplotlib) |
-| Optimization | MATLAB (`fmincon`/`ga`) or Python (`scipy.optimize`) |
-| Documentation | Markdown/LaTeX, Git |
+| Meshing and FEA solver | **ANSYS Mechanical** (native meshing, Static and Transient Structural, Workbench GUI) |
+| Supplementary meshing practice | Altair HyperMesh Student Edition (OptiStruct/RADIOSS export only, see note below) |
+| Dynamic load generation | **MATLAB + Simulink** (quarter-car), cross-checked against a MATLAB ODE solution |
+| Fatigue estimate | MATLAB (rainflow counting written from scratch per ASTM E1049-85, Miner's rule) |
+| Optimization | MATLAB `fmincon` (SQP) |
+| Optional scripted path | APDL / Python scripts in `fea_scripts/`, written for the original HyperMesh plan and **not used** for any reported result |
 
-**Note on HyperMesh vs. ANSYS Mechanical:** the original plan was to mesh in HyperMesh and solve in ANSYS via an exported `.cdb` deck. HyperMesh Student Edition, however, only exports to OptiStruct/RADIOSS (`.fem`) — ANSYS export requires a full commercial license. Rather than fight that limitation, the mesh generation and FEA solve for this project both happen natively inside **ANSYS Mechanical** (Workbench), which is free with ANSYS Student and needs no format conversion. HyperMesh is still used and kept in the repo (`mesh_scripts/`, and any `.fem` files you produce) as separate, genuine evidence of HyperMesh meshing skill — it's just not on the critical path that produces this project's FEA results.
+**Note on HyperMesh vs. ANSYS Mechanical:** the original plan was to mesh in HyperMesh and solve in ANSYS via an exported `.cdb` deck. HyperMesh Student Edition only exports OptiStruct/RADIOSS (`.fem`), so meshing and solving were both done natively in ANSYS Mechanical. The HyperMesh meshes are kept in `mesh_scripts_old/` and `command1.tcl` as supplementary evidence, off the critical path.
 
 ## Methodology
 
-1. **Baseline CAD model** — parametric bracket modeled in Fusion 360 (thickness, hole pattern, fillets), exported as a STEP file.
-2. **Dynamic load generation (MATLAB/Simulink)** — quarter-car model in Simulink driven by a road-bump input; independently solved via a MATLAB ODE script; peak force and full load history extracted from both, compared for agreement.
-3. **Meshing (ANSYS Mechanical, native)** — import the STEP geometry directly into ANSYS Mechanical and generate the mesh there at 2–3 element sizes for the convergence study (see `fea_scripts/ANSYS_MECHANICAL_WORKFLOW.md`). HyperMesh meshing of the same geometry is also kept in the repo as supplementary, documented skill evidence, exported to OptiStruct format.
-4. **FEA solve (ANSYS Mechanical, native)** — apply the Step-2 peak load and the chassis-hole fixed supports, solve, and record max equivalent (von Mises) stress, part mass, and (optionally) first natural frequency for each mesh density and geometry configuration.
-5. **Analytical cross-check + convergence study** — independent beam/plate-theory hand calculation at the critical section, plus the mesh-convergence sweep from Step 3–4.
-6. **Fatigue estimate (MATLAB)** — rainflow-count the Step-2 load history, apply Miner's rule with a published S-N curve, estimate a fatigue life/damage ratio for the baseline design.
-7. **Design space exploration & optimization** — sweep geometry parameters through Steps 3–4, then minimize mass subject to a stress/fatigue-damage constraint (MATLAB or Python), reporting the optimized geometry and % mass saved.
-8. **Reporting** — methodology, assumptions, convergence study, dynamic-model cross-check, fatigue result, and optimization trade-off, with plots.
+1. **Baseline CAD**: a 95 × 30 × 10 mm flat plate with two Ø6 mm chassis holes and one Ø12 mm load hole, modeled in Fusion 360 and exported as STEP.
+2. **Dynamic load generation**: quarter-car model in Simulink and as a MATLAB ODE; peak force and full history extracted and compared.
+3. **Meshing and FEA**: STEP imported into ANSYS Mechanical; fixed supports on the chassis-hole faces, 3900 N on the load-hole face; mesh-convergence sweep at 3.0, 1.5 and 1.2 mm (see `fea_scripts/ANSYS_MECHANICAL_WORKFLOW.md`).
+4. **Analytical cross-check**: net-section beam bending at the critical section (`postprocessing/analytical_beam_check.m`).
+5. **Fatigue estimate**: rainflow counting of the load history, Miner's rule with a generic illustrative S-N curve (not a certified material curve), stress scaled from the converged FEA result.
+6. **Optimization**: constrained mass minimization over plate thickness only, using surrogate models calibrated to the converged FEA point (allowable stress 250 MPa / 1.5 = 166.7 MPa).
+7. **Phase 2**: U-channel redesign and a Transient Structural solve driven by the full mount-force history (below).
+8. **Reporting**: `report/technical_report.md`.
+
+## Phase 2: Transient Dynamic Loading on a Redesigned Channel-Section Part
+
+The optimization showed that thickening a flat plate is a mass-inefficient way to meet the safety factor (+145% mass), so the bracket was redesigned as a U-channel (5 mm web and flanges, 40 mm wide web, 15 mm flanges). A **Transient Structural** solve was driven by the full time-varying mount force. It includes a temporal-convergence check, a same-mesh static-vs-transient comparison (amplification ≈ 0.99, after an earlier cross-geometry comparison suggesting 2.68x was found to be invalid), an animated stress-contour export (`results/transient_stress_animation.wmv`), and an analytical check showing where beam theory stops being valid (next to a support and a hole). Details are in Section 7 of the technical report.
 
 ## Repository Structure
 
 ```
 suspension-bracket-fea-optimization/
 ├── README.md
-├── cad/                      # Fusion 360 files + STEP exports (flat-plate baseline + redesigned channel)
-├── dynamics_matlab/          # Simulink quarter-car model builder + MATLAB ODE cross-check + fatigue
-│                              # + export_load_table_for_ansys.m (downsamples the load history for a
-│                              #   Transient Structural tabular load, guaranteeing the true peak survives)
-├── mesh_scripts/             # HyperMesh TCL/Python batch-meshing scripts (supplementary skill evidence)
-├── fea_scripts/              # ANSYS Mechanical workflow notes + results; APDL/PyMAPDL scripts kept as an optional scripted-automation path
-├── postprocessing/           # analytical hand-calc cross-check, result parsing, plotting
-├── optimization/              # mass-minimization driver script
-├── report/                   # final write-up and figures
-└── results/                   # raw result data (CSV), stress-contour images, transient stress animation
+├── cad/                  # STEP exports: flat-plate baseline + redesigned channel
+├── dynamics_matlab/      # Simulink quarter-car builder + MATLAB ODE cross-check
+│                         # + export_load_table_for_ansys.m (downsamples the load history for the
+│                         #   Transient Structural tabular load, keeping the true peak sample)
+├── mesh_scripts/         # ANSYS Workbench projects per element size (flat plate and channel)
+├── mesh_scripts_old/     # HyperMesh OptiStruct meshes (supplementary, not on the critical path)
+├── fea_scripts/          # ANSYS Mechanical workflow notes; APDL/Python scripts kept as an unused optional path
+├── postprocessing/       # analytical hand check, rainflow/Miner fatigue
+├── optimization/         # fmincon mass-minimization script
+├── report/               # technical_report.md
+└── results/              # convergence CSVs, load table, mount-force plot, transient stress animation
 ```
 
-## Phase 2: Transient Dynamic Loading on a Redesigned Channel-Section Part
+## Known Limitations
 
-The pipeline above applies the quarter-car model's *peak* load as a static design load. A second phase pushes further: a **U-channel redesign** of the bracket (motivated by the optimization step's finding that a flat plate is a mass-inefficient way to add stiffness), analyzed with a genuine **Transient Structural** solve driven by the *full* time-varying mount-force history (not just its peak), including its own temporal-convergence check, a clean same-mesh static-vs-transient comparison (finding no significant dynamic amplification once the comparison is done correctly), an animated stress-contour video export, and a properly-anchored analytical cross-check that demonstrates *where* beam theory does and doesn't apply. Full details and results are in `report/technical_report.md`, Section 7.
-
-## What This Demonstrates
-
-- **CAD & parametric design** (Fusion 360)
-- **Meshing & FEA in ANSYS Mechanical** as real, documented, hands-on experience, plus supplementary HyperMesh meshing evidence
-- **MATLAB/Simulink dynamic modeling** — a skill not otherwise represented in your current CV
-- **Automation/scripting** (Python + MATLAB) extending your existing FRASCAL automation work
-- **Structural verification methodology** — two independent dynamic models cross-checked, plus analytical FEA benchmarking and mesh convergence
-- **Fatigue/durability assessment** — the recurring gap across the postings you've targeted this session
-- **Optimization/lightweighting** — directly maps to "optimizing components for weight, cost, and robustness"
-- **Working around real license constraints** — recognizing a tooling limitation (HyperMesh Student's OptiStruct-only export) and adapting the pipeline instead of forcing an unreliable workaround, which is itself a realistic piece of engineering judgment worth being able to talk about
-
-## Feasibility Note
-
-Every step is achievable with student/academic licenses (ANSYS Student, MATLAB/Simulink via FAU's TAH license, HyperMesh Student Edition, Fusion 360's free personal/education license) and requires no physical test rig, lab booking, or confidential company data. Verification comes from analytical hand calculations, a mesh-convergence study, and independent dynamic-model cross-checking — not physical-test correlation.
+- The analyses are **linear-elastic**. Peak local stresses (998 MPa flat plate, about 2.7 GPa channel) are far above the 250 MPa yield used for the constraint, so they are best read as relative indices, not predictions of real stress. Plasticity and local strain-life methods would be needed for a qualified result.
+- The mesh study stops at 1.2 mm because of the ANSYS Student ~32,000-node limit, leaving roughly 5% residual convergence uncertainty by the report's own estimate.
+- The fatigue result demonstrates the method on a single severe bump with a generic S-N curve. It is not a qualified life estimate.
+- Only a vertical bump input is modeled. Braking and cornering load cases are not.
+- No physical-test correlation: fixed-support boundary conditions are idealized.
 
 ## Status
 
-CAD baseline modeled in Fusion 360; Simulink/MATLAB quarter-car dynamics built and cross-checked (1.4% agreement between the two models); HyperMesh meshes exported at 3 element sizes (OptiStruct format, supplementary). Next: mesh and solve in ANSYS Mechanical directly (see `fea_scripts/ANSYS_MECHANICAL_WORKFLOW.md`), then the analytical cross-check, fatigue estimate, and optimization steps.
+Complete through Phase 2: load derivation, mesh convergence, analytical cross-check, fatigue estimate, thickness optimization, channel redesign, transient analysis and animation. Next steps are listed in Section 8 of the technical report (certified S-N data, a road-load spectrum, strain-gauge correlation, optimization on the channel geometry, and a finer mesh on a full ANSYS license).
+
+## Feasibility Note
+
+Every step uses student/academic licenses (ANSYS Student, MATLAB/Simulink, HyperMesh Student Edition, Fusion 360 education) and requires no physical test rig, lab booking or confidential data.
